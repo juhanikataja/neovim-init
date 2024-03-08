@@ -44,9 +44,9 @@ set tgc
 "" parens matching color
 :hi MatchParen cterm=bold ctermbg=none ctermfg=none
 :hi MatchParen term=bold gui=bold guifg=NONE guibg=NONE
+colo koehler
 " }}}
 
-colo slate
 
 " Pylint settings {{{
 let g:pymode_lint_ignore = "E225,E231,W901,W404,W402,E302,W501,W111,W0311,E111"
@@ -72,7 +72,10 @@ augroup END
 " }}}
 
 " folding  {{{
-set foldmethod=marker
+set foldmethod=expr
+set foldexpr=nvim_treesitter#foldexpr()
+autocmd BufReadPost,FileReadPost * normal zR
+
 " let fortran_fold=1
 let fortran_do_enddo=1
 let fortran_more_precise=1
@@ -119,7 +122,7 @@ nnoremap <Leader>vr :VimroomToggle<CR>
 "" Vista  {{{
 nnoremap <F7> :Vista!!<CR>
 let g:vista_default_executive='nvim_lsp'
-let g:vista_icon_indent = ["??? ", "??? "]
+let g:vista_icon_indent = ["o ", "-> "]
 "" }}}
 
 "" Jump around in buffers and tabs
@@ -248,7 +251,7 @@ augroup END
 " filetype fortran group {{{ 
 augroup filetype_fortran
   autocmd!
-  autocmd FileType fortran setlocal foldmethod=marker
+  autocmd FileType fortran setlocal foldmethod=expr
   autocmd FileType fortran setlocal cc=132
 augroup END
 " }}}
@@ -256,7 +259,7 @@ augroup END
 " filetype yaml group {{{
 augroup filetype_yaml
   autocmd!
-  autocmd FileType yaml setlocal foldmethod=syntax
+  autocmd FileType yaml setlocal foldmethod=expr
 augroup END
 " }}}
 
