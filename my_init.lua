@@ -20,16 +20,22 @@ require("lazy").setup({
   "nvim-treesitter/nvim-treesitter",
   "ctrlpvim/ctrlp.vim",
   "hrsh7th/nvim-cmp",
-  "hrsh7th/cmp-nvim-lsp",
+   "hrsh7th/cmp-nvim-lsp",
   "hrsh7th/cmp-buffer",
   "hrsh7th/cmp-path",
-  "hrsh7th/cmp-cmdline",
- "hrsh7th/cmp-vsnip",
- "hrsh7th/vim-vsnip",
- "rafamadriz/friendly-snippets"
+ "hrsh7th/cmp-cmdline",
+--- "hrsh7th/cmp-vsnip",
+ ---"hrsh7th/vim-vsnip",
+ "rafamadriz/friendly-snippets",
+ "juhanikataja/vim-elmer",
+ "folke/zen-mode.nvim",
+ "preservim/nerdcommenter",
+ "vim-ctrlspace/vim-ctrlspace",
+ {"L3MON4D3/LuaSnip", tag = "v2.2.0", run = "make install_jsregexp"}
 --  "SirVer/ultisnips",
 --  "quangnguyen30192/cmp-nvim-ultisnips"
 })
+
 
 --require("lspconfig").lua_ls.setup{}
 require("lspconfig").fortls.setup{}
@@ -38,6 +44,9 @@ require("lspconfig").clangd.setup{}
 --- fzf
 ---require("fzf").setup()
 
+
+--- ctrlspace
+
 --- lsp
 -- Global mappings.
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions
@@ -45,6 +54,7 @@ vim.keymap.set('n', '<space>e', vim.diagnostic.open_float)
 vim.keymap.set('n', '[d', vim.diagnostic.goto_prev)
 vim.keymap.set('n', ']d', vim.diagnostic.goto_next)
 vim.keymap.set('n', '<space>q', vim.diagnostic.setloclist)
+
 
 -- Use LspAttach autocommand to only map the following keys
 -- after the language server attaches to the current buffer
@@ -142,7 +152,7 @@ require'nvim-treesitter.configs'.setup {
       ['<Tab>'] =cmp.mapping.select_next_item(),
       ['<C-b>'] = cmp.mapping.scroll_docs(-4),
       ['<C-f>'] = cmp.mapping.scroll_docs(4),
-      ['<C-Space>'] = cmp.mapping.complete(),
+      --['<C-Space>'] = cmp.mapping.complete(),
       ['<C-e>'] = cmp.mapping.abort(),
       ['<CR>'] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
     }),
@@ -190,3 +200,4 @@ require'nvim-treesitter.configs'.setup {
   require('lspconfig')['fortls'].setup {
     capabilities = capabilities
   }
+

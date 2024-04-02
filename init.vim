@@ -25,6 +25,7 @@ set laststatus=2
 "" incremental search
 set incsearch
 set nofixendofline
+set encoding=utf-8
 
 "" mouse
 set mouse=a
@@ -103,12 +104,16 @@ noremap § ~
 noremap ö g^
 noremap ä g$
 
+
 " k -> gk and j -> gj
 noremap k gk
 noremap j gj
 
 "" mapleader
 let mapleader=","
+
+"" ZenMode
+noremap <Leader>z :ZenMode<CR>
 
 "" Nerdtree
 nnoremap <F10> :NERDTreeToggle<CR>
@@ -169,12 +174,15 @@ let g:NERDCustomDelimiters={ 'sif': {'left': '!', }, }
 
 "" ctrl-space specific {{{
 if executable("ag")
-    let g:CtrlSpaceGlobCommand = 'ag -l --nocolor -g ""'
+   let g:CtrlSpaceGlobCommand = 'ag -l --nocolor -g ""'
 endif
 let g:CtrlSpaceLoadLastWorkspaceOnStart = 1
 
+let g:CtrlSpaceSetDefaultMapping = 0
 " neovim ctrl-space workaround
-let g:CtrlSpaceDefaultMappingKey = "<C-Space> "
+"let g:CtrlSpaceDefaultMappingKey = "<C-Space> "
+noremap <C-Space> :CtrlSpace<CR>
+"
 " }}}
 
 "" syntastic settings {{{
@@ -253,6 +261,7 @@ augroup filetype_fortran
   autocmd!
   autocmd FileType fortran setlocal foldmethod=expr
   autocmd FileType fortran setlocal cc=132
+  autocmd FileType fortran set ignorecase
 augroup END
 " }}}
 
