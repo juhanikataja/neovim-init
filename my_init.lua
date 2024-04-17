@@ -24,14 +24,22 @@ require("lazy").setup({
   "hrsh7th/cmp-buffer",
   "hrsh7th/cmp-path",
  "hrsh7th/cmp-cmdline",
+"kdheepak/cmp-latex-symbols",
 --- "hrsh7th/cmp-vsnip",
  ---"hrsh7th/vim-vsnip",
  "rafamadriz/friendly-snippets",
  "juhanikataja/vim-elmer",
  "folke/zen-mode.nvim",
- "preservim/nerdcommenter",
+ --"preservim/nerdcommenter",
+ "tpope/vim-commentary",
+ "tpope/vim-fugitive",
  "vim-ctrlspace/vim-ctrlspace",
- {"L3MON4D3/LuaSnip", tag = "v2.2.0", run = "make install_jsregexp"}
+ {"L3MON4D3/LuaSnip", tag = "v2.2.0", run = "make install_jsregexp"},
+  "WhoIsSethDaniel/toggle-lsp-diagnostics.nvim",
+  {
+    "folke/neodev.nvim",
+    lazy = true,
+  },
 --  "SirVer/ultisnips",
 --  "quangnguyen30192/cmp-nvim-ultisnips"
 })
