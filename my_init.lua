@@ -40,6 +40,26 @@ require("lazy").setup({
     "folke/neodev.nvim",
     lazy = true,
   },
+  "ixru/nvim-markdown",
+
+{
+    "toppair/peek.nvim",
+    event = { "VeryLazy" },
+    build = "deno task --quiet build:fast",
+    config = function()
+        require("peek").setup()
+        vim.api.nvim_create_user_command("PeekOpen", require("peek").open, {})
+        vim.api.nvim_create_user_command("PeekClose", require("peek").close, {})
+    end,
+},
+
+-- { -- MarkdownPreview
+--     "iamcco/markdown-preview.nvim",
+--     cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
+--     ft = { "markdown" },
+--     build = function() vim.fn["mkdp#util#install"]() end,
+-- },
+
 --  "SirVer/ultisnips",
 --  "quangnguyen30192/cmp-nvim-ultisnips"
 })
@@ -138,6 +158,29 @@ require'nvim-treesitter.configs'.setup {
   },
 }
 
+-- peek config:
+require('peek').setup({
+  auto_load = true,         -- whether to automatically load preview when
+                            -- entering another markdown buffer
+  close_on_bdelete = true,  -- close preview window on buffer delete
+
+  syntax = true,            -- enable syntax highlighting, affects performance
+
+  theme = 'light',           -- 'dark' or 'light'
+
+  update_on_change = true,
+
+  app = 'browser',          -- 'webview', 'browser', string or a table of strings
+                            -- explained below
+
+  filetype = { 'markdown' },-- list of filetypes to recognize as markdown
+
+  -- relevant if update_on_change is true
+  throttle_at = 200000,     -- start throttling when file exceeds this
+                            -- amount of bytes in size
+  throttle_time = 'auto',   -- minimum amount of time in milliseconds
+                            -- that has to pass before starting new render
+})
 
 --- nvim-cmp
   local cmp = require'cmp'

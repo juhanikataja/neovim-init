@@ -45,7 +45,7 @@ set tgc
 "" parens matching color
 :hi MatchParen cterm=bold ctermbg=none ctermfg=none
 :hi MatchParen term=bold gui=bold guifg=NONE guibg=NONE
-colo koehler
+colo torte
 " }}}
 
 
