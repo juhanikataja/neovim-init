@@ -313,3 +313,7 @@ let g:vimroom_width = 132
 " let g:latex_to_unicode_file_types_blacklist = '.*'
 """ }}}
 
+""" {{{ floatterm
+nnoremap   <silent>   <F12>   :FloatermToggle<CR>
+tnoremap   <silent>   <F12>   <C-\><C-n>:FloatermToggle<CR>
+""" }}}
