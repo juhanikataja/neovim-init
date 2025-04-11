@@ -35,7 +35,7 @@ require("lazy").setup({
  "tpope/vim-fugitive",
  "vim-ctrlspace/vim-ctrlspace",
  {"L3MON4D3/LuaSnip", tag = "v2.2.0", run = "make install_jsregexp"},
-  "WhoIsSethDaniel/toggle-lsp-diagnostics.nvim",
+  -- "WhoIsSethDaniel/toggle-lsp-diagnostics.nvim",
   {
     "folke/neodev.nvim",
     lazy = true,
@@ -108,6 +108,7 @@ require("lspconfig").clangd.setup{}
 --- lsp
 -- Global mappings.
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions
+vim.keymap.set('n', '<space>d', function() vim.diagnostic.enable(not vim.diagnostic.is_enabled()) end)
 vim.keymap.set('n', '<space>e', vim.diagnostic.open_float)
 vim.keymap.set('n', '[d', vim.diagnostic.goto_prev)
 vim.keymap.set('n', ']d', vim.diagnostic.goto_next)
